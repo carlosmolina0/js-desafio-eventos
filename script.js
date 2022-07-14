@@ -82,17 +82,15 @@ function seleccionarEmpleado () {
     empleado = prompt("Selecciona el empleado sobre el que quieres actuar:\n1. " + totalEmpleados[0].nombre + " " + totalEmpleados[0].apellido + "\n2." + totalEmpleados[1].nombre + " " + totalEmpleados[1].apellido + "\n3." + totalEmpleados[2].nombre + " " + totalEmpleados[2].apellido + "\n4." + totalEmpleados[3].nombre + " " + totalEmpleados[3].apellido + "\n5." + totalEmpleados[4].nombre + " " + totalEmpleados[4].apellido + "\n6." + totalEmpleados[5].nombre + " " + totalEmpleados[5].apellido + "\n7." + totalEmpleados[6].nombre + " " + totalEmpleados[6].apellido + "\nSelecciona un número del 1 al 7 para seleccionar el empleado sobre el que realizar la Gestión")
 }
 
-//Función realizar gestión adicional 
-/*
-function gestionAdicional () {
-    let otraGestion = prompt("¿Deseas realizar otra gestión? (Si o No)")
-    otraGestion.toLowerCase()
+//Función incrementar sueldo
 
-    if (otraGestion = "si") {
-        alert ("Perfecto. Continua para seleccionar el tipo de gestión que quieres realizar")
-    } else alert ("Muchas gracias por tu tiempo, vuelve cuando quieras")
-}
-*/
+
+
+
+//Función Registrar Vacaciones
+
+
+
 
 //Iniciamos el Programa de Gestión
 
