@@ -31,10 +31,8 @@ trabajador3 = new Personal (2, "Pablo", "Fiestas", 40, "VP Operaciones", 15, 500
 trabajador2 = new Personal (1, "Carlos", "Molina", 45, "VP Sales", 18, 50000, [trabajador4, trabajador5])
 trabajador1 = new Personal (0, "Raúl", "De Pablos", 48, "CEO", "22", "70000", [trabajador2, trabajador3])
 
-let trabajador8
-let empleadoBaja
-let seleccionaGestion 
-let otraGestion
+let trabajador8, empleadoEmpleado, seleccionaGestion, otraGestion, aumento, empleadoSubirSueldo, incrementoSueldo
+
 
 //Creamos un Array con cada Departamento
 
@@ -47,7 +45,7 @@ const operaciones = [trabajador6, trabajador7]
 
 //Creamos un Array con las Gestiones a Realizar en la aplicación de RR.HH.
 
-let gestiones = ["Alta nuevo empleado", "Baja de empleado", "Incrementar sueldo (No disponble)", "Registrar vacaciones (No disponible)", "Mostrar el Total de Empleados"]
+let gestiones = ["Alta nuevo empleado", "Baja de empleado", "Incrementar sueldo", "Registrar vacaciones (No disponible)", "Mostrar el Total de Empleados"]
 
 
 
@@ -80,12 +78,44 @@ function seleccionarEmpleado () {
 
     totalEmpleados = directores.concat(marketingyventas.concat(operaciones))
     empleado = prompt("Selecciona el empleado sobre el que quieres actuar:\n1. " + totalEmpleados[0].nombre + " " + totalEmpleados[0].apellido + "\n2." + totalEmpleados[1].nombre + " " + totalEmpleados[1].apellido + "\n3." + totalEmpleados[2].nombre + " " + totalEmpleados[2].apellido + "\n4." + totalEmpleados[3].nombre + " " + totalEmpleados[3].apellido + "\n5." + totalEmpleados[4].nombre + " " + totalEmpleados[4].apellido + "\n6." + totalEmpleados[5].nombre + " " + totalEmpleados[5].apellido + "\n7." + totalEmpleados[6].nombre + " " + totalEmpleados[6].apellido + "\nSelecciona un número del 1 al 7 para seleccionar el empleado sobre el que realizar la Gestión")
+
+    if(empleado >0 && empleado <= 8) 
+    {
+        switch (empleado) {
+            case "1": 
+                posicionEmpleado = 0
+                break
+            case "2": 
+                posicionEmpleado = 1
+                break
+            case "3": 
+                posicionEmpleado = 2
+                break
+            case "4": 
+                posicionEmpleado = 3
+                break
+            case "5": 
+                posicionEmpleado = 4
+                break
+            case "6": 
+                posicionEmpleado = 5
+                break
+            case "7": 
+                posicionEmpleado = 6
+                break
+            case "8": 
+                posicionEmpleado = 7
+                break
+        }
+    } else alert("Debes ingresar un valor en formato número entre el 1 y el 8")
 }
+    
 
 //Función incrementar sueldo
 
-
-
+function incrementarSueldo () {
+    aumento = parseInt(prompt("Ingrese el importe a incrementar en el salario mensual"))
+}
 
 //Función Registrar Vacaciones
 
@@ -153,41 +183,11 @@ do {
 
         do {
             seleccionarEmpleado()
-        
-            if(empleado >0 && empleado <= 8) 
-            {
-                switch (empleado) {
-                    case "1": 
-                        posicionBaja = 0
-                        break
-                    case "2": 
-                        posicionBaja = 1
-                        break
-                    case "3": 
-                        posicionBaja = 2
-                        break
-                    case "4": 
-                        posicionBaja = 3
-                        break
-                    case "5": 
-                        posicionBaja = 4
-                        break
-                    case "6": 
-                        posicionBaja = 5
-                        break
-                    case "7": 
-                        posicionBaja = 6
-                        break
-                    case "8": 
-                        posicionBaja = 7
-                        break
-                }
-            } else alert("Debes ingresar un valor en formato número entre el 1 y el 8")
 
         } while (isNaN(empleado)) 
 
         totalEmpleados = directores.concat(marketingyventas.concat(operaciones))
-        const nombreBaja = (totalEmpleados.splice(posicionBaja,1))
+        const nombreBaja = (totalEmpleados.splice(posicionEmpleado,1))
 
         alert (`El trabajador ${nombreBaja[0].nombre} ${nombreBaja[0].apellido} se ha dado de baja de la compañía`)
 
@@ -254,7 +254,25 @@ let diasVacaciones = prompt("Ingresa el número de días de Vacaciones disfrutad
     }*/
 
 
+//Ejecutamos la función de Incrementar el sueldo a un empleado
+
+    if(gestion == "Incrementar sueldo") {
+        do {
+            seleccionarEmpleado()
+
+            incrementoSueldo = parseInt(prompt("Ingresa el importe que quieres incrementar en el sueldo"))
+            empleadoSubirSueldo = totalEmpleados.find((elemento) => elemento.id == posicionEmpleado)
+            console.log(empleadoSubirSueldo)
+            empleadoSubirSueldo.sueldo = empleadoSubirSueldo.sueldo += incrementoSueldo  
+            console.log(empleadoSubirSueldo) 
+            totalEmpleados = directores.concat(marketingyventas.concat(operaciones))
+
+        } while (isNaN(empleado)) 
+
+        }
+
 //Función Mostar Lista de Empleados en la Consola
+
 
     if(gestion == "Total empleados") {
         totalEmpleados = directores.concat(marketingyventas.concat(operaciones))
@@ -262,6 +280,7 @@ let diasVacaciones = prompt("Ingresa el número de días de Vacaciones disfrutad
         totalEmpleados.forEach(empleado => {console.log(empleado.nombre, empleado.apellido)})
         alert(`La empresa tiene actualmente" ${totalEmpleados.length} "empleados`)
     }
+
 
 // Pregunta si desea realizar otra gestión
 
