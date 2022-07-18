@@ -22,6 +22,7 @@ class Personal {
 }
 
 //Agregamos los objetos con la plantilla actual
+let id, nombre, apellido, edad, posicion, vacaciones, sueldo, equipo    
 
 trabajador7 = new Personal (6, "Carlos", "Godoy", 32, "Project Manager", 19, 38000, [])
 trabajador6 = new Personal (5, "Reka", "Barath", 35, "Operations Manager", 36, 40000, [])
