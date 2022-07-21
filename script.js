@@ -5,7 +5,7 @@ class Usuario {
     }
 
 }
-
+ 
 const usuarios = []
 
 const form = document.getElementById("idForm")
